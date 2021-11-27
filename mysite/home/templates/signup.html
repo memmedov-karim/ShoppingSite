@@ -1,0 +1,76 @@
+{% extends "homebase.html" %}
+
+{% block title %} {{setting.tittle}} {% endblock %}
+
+{% block keywords %} {{setting.keywords}} {% endblock %}
+
+{% block description %} {{setting.description}} {% endblock %}
+{% block head %}
+<link rel="shortcut icon" type="image/x-icon" href="{{setting.icon.url}}">
+{% endblock %}
+
+{% block sidebar %}
+
+{% include "sidebar.html" %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<!-- BREADCRUMB -->
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active"><a href="/signup">Sign Up</a></li>
+        </ul>
+    </div>
+</div>
+<!-- /BREADCRUMB -->
+
+  	<!-- section -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<form id="checkout-form" class="clearfix"  method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <p>
+                            {{field.label_tag}}<br>
+                            {{field}}
+                            {% if field.help_text %}
+                                <small style="color: aqua;"  >{{field.help_text}}</small>
+                            {% endif %}
+                            {% for error in field.errors %}
+                                <p style="color: red;">{{error}}</p>
+                            {% endfor %}
+
+                        </p>
+                    {% endfor %}
+                    <button type="submit" >Sign Up</button>
+
+				</form>			
+						
+			</div>
+                
+                    <div class="section">
+                    <!-- container -->
+                        <div class="container">
+                        <!-- row -->
+                            <div class="row">
+                            {{setting.contact|safe}}
+                            </div>
+                        <!-- /row -->
+                        </div>
+                    <!-- /container -->
+                    </div>
+                <!-- /section -->
+
+			</div>		
+        </div>  
+    </div>                           
+
+{% endblock %}

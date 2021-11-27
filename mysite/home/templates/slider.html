@@ -1,0 +1,30 @@
+	<!-- HOME -->
+	<div id="home">
+		<!-- container -->
+		<div class="container">
+			<!-- home wrap -->
+			<div class="home-wrap">
+				<!-- home slick -->
+				<div id="home-slick">
+					<!-- banner -->
+					{% for product in newproduct %}
+					<div class="banner banner-1" >
+						<img src="{{product.image.url}}"  style=" height: 400px; width: 450px; " alt="">
+						<div class="banner-caption text-center">
+							<h1>Bags sale</h1>
+							<h3 class="white-color font-weak">Up to 50% Discount</h3>
+							<a href="/category_detail/{{product.id}}" class="primary-btn">Shop Now<a>
+						</div>
+					</div>
+					{% endfor %}
+					<!-- /banner -->
+
+					
+				</div>
+				<!-- /home slick -->
+			</div>
+			<!-- /home wrap -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /HOME -->

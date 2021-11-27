@@ -1,0 +1,59 @@
+	<!-- NAVIGATION -->
+	<div id="navigation">
+		<!-- container -->
+		<div class="container">
+			<div id="responsive-nav">
+				<!-- category nav -->
+				{% if page == 'home' %}
+				<div class="category-nav">
+				{% else %}	
+				<div class="category-nav show-on-click">
+				{% endif %}
+					<span class="category-header">Categories <i class="fa fa-list"></i></span>
+					<ul class="category-list">
+						{% load mptt_tags %}
+						
+							{% recursetree category %}
+							    <li class="dropdown side-dropdown">
+								    <a href="/products/{{node.id}}/{{node.slug}}" class="dropdown-toggle" {% if not node.is_leaf_node %}  data-toggle="dropdown" aria-expanded="true" {% endif %} >{{ node.tittle }} {% if not node.is_leaf_node %}  <i class="fa fa-angle-right"></i> {% endif %} </a>
+								    <div class="custom-menu">
+								        <div class="row">
+									        <div class="col-md-4">
+											
+									
+									                {% if not node.is_leaf_node %}
+									                    <ul class="list-links">
+										                    <li><a href="/products/{{node.id}}/{{node.slug}}">{{ children }}</a></li>
+											
+										                </ul>
+									                {% endif %}
+									                <hr class="hidden-md hidden-lg">
+										    </div>
+									    </div>
+								    </div>				
+							    </li>
+							{% endrecursetree %}
+						</ul>
+				</div>
+				</div>
+				<!-- /category nav -->
+
+				<!-- menu nav -->
+				<div class="menu-nav">
+					<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
+					<ul class="menu-list">
+						<li><a href="/">Home</a></li>
+						<li><a href="/aboutus">About Us</a></li>
+						<li><a href="#" >Not known</a></li>
+						<li><a href="#" >Not Known</a></li>
+						<li><a href="/references">References</a></li>
+						<li ><a href="/contact" >Contact</a>
+						</li>
+					</ul>
+				</div>
+				<!-- menu nav -->				
+			</div>
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /NAVIGATION -->

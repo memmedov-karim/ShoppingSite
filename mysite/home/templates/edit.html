@@ -1,0 +1,50 @@
+{% extends "homebase.html" %}
+
+{% block title %} {{setting1.tittle}} {% endblock %}
+
+{% block keywords %} {{setting.keywords}} {% endblock %}
+
+{% block description %} {{setting.description}} {% endblock %}
+{% block head %}
+{% load static %}
+<link rel="shortcut icon" type="image/x-icon" href="{{setting.icon.url}}">
+<link rel="stylesheet" type="text/css"  href="{% static 'css/style1.css' %}" >
+{% endblock %}
+
+{% block sidebar %}
+
+{% include "sidebar.html" %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="main-body">
+    
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
+              <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+            </ol>
+          </nav>
+          <!-- /Breadcrumb -->
+
+          <form method="post" enctype="multipart/form-data" > 
+            {% csrf_token %}
+            <fieldset class="form-group" >
+                {{user_form.as_p}}
+                {{profile_form.as_p}}
+
+            </fieldset>
+            <div class="form-group" >
+                <button type="submit" class="primary-btn" >Update</button>
+            </div>
+
+          </form>
+    </div>      
+</div>
+{% endblock %}

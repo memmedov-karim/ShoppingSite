@@ -1,0 +1,64 @@
+{% extends "homebase.html" %}
+
+{% block title %} {{setting1.tittle}} {% endblock %}
+
+{% block keywords %} {{setting.keywords}} {% endblock %}
+
+{% block description %} {{setting.description}} {% endblock %}
+{% block head %}
+<link rel="shortcut icon" type="image/x-icon" href="{{setting.icon.url}}">
+{% endblock %}
+
+{% block sidebar %}
+
+{% include "sidebar.html" %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<!-- BREADCRUMB -->
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active"><a href="/aboutus">about us</a></li>
+        </ul>
+    </div>
+</div>
+<!-- /BREADCRUMB -->
+
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <table cellpadding="3" width="1200">
+                <tr>
+                    <th>Image</th>
+                    <th>Product name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                </tr>
+                {% for product in products %}
+                    <tr>
+                        <td><a href="/category_detail/{{product.id}}" ><img src="{{product.image.url}}" style="height: 130px" ></a></td>
+                        <td><h4 class="product-name"><a href="/category_detail/{{product.id}}" >{{product.tittle}}</a></h4></td>
+                        <td><a href="/products/{{product.category_id}}/{{product.category.slug}}" >{{product.category}}</a></td>
+                        <td><h4>{{product.price}}</h4></td>
+                    </tr>
+                {% endfor %}
+
+
+            </table>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->
+
+
+{% endblock %}
